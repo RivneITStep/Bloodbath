@@ -53,9 +53,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\GunDataBase.cs" />
+     <Compile Include="Assets\Scripts\GunShop.cs" />
+     <Compile Include="Assets\Scripts\GunUI.cs" />
+     <Compile Include="Assets\Scripts\Helpers\SpriteHelper.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\IPageable.cs" />
+     <Compile Include="Assets\Scripts\Item.cs" />
+     <Compile Include="Assets\Scripts\ItemInfo.cs" />
      <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Page.cs" />
+     <Compile Include="Assets\Scripts\Player\DataBase.cs" />
+     <Compile Include="Assets\Scripts\Player\Inventory.cs" />
+     <Compile Include="Assets\Scripts\Player\InventoryItem.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
+     <Compile Include="Assets\Scripts\Weapon.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
