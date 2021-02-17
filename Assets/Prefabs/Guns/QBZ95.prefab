@@ -146,6 +146,7 @@ MonoBehaviour:
   item_id: Assault_qbz
   DisplayName: QBZ95
   Rarity: 1
+  weaponClass: 3
 --- !u!61 &61839450047875636
 BoxCollider2D:
   m_ObjectHideFlags: 0

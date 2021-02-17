@@ -146,6 +146,7 @@ MonoBehaviour:
   item_id: Subg_mp7
   DisplayName: MP-7
   Rarity: 0
+  weaponClass: 1
 --- !u!61 &61370257360145958
 BoxCollider2D:
   m_ObjectHideFlags: 0

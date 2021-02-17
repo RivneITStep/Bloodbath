@@ -146,6 +146,7 @@ MonoBehaviour:
   item_id: Assault_sigsg
   DisplayName: SIG SG 550
   Rarity: 1
+  weaponClass: 3
 --- !u!61 &61477771612099068
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: Shotgun_obrez
   DisplayName: Obrez
   Rarity: 1
+  weaponClass: 2
 --- !u!61 &61781570581048266
 BoxCollider2D:
   m_ObjectHideFlags: 0

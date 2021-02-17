@@ -63,3 +63,4 @@ MonoBehaviour:
   - {fileID: 912279225863179067, guid: f9275e32e8053f545a2adb92db3c5306, type: 3}
   - {fileID: 9203445203001867861, guid: a139aee3c32f8324e99f279644764f5c, type: 3}
   - {fileID: 347759142336150486, guid: d2db011a1a6475247979736e2486977f, type: 3}
+  gunIsLocked: {fileID: 21300000, guid: 09181584b96db1c4ab5b2a44386734e9, type: 3}

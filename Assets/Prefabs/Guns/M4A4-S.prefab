@@ -205,6 +205,7 @@ MonoBehaviour:
   item_id: Assault_m4a4s
   DisplayName: M4A4-S
   Rarity: 1
+  weaponClass: 3
 --- !u!61 &61523111446979904
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: MachineG,m60
   DisplayName: M60
   Rarity: 2
+  weaponClass: 5
 --- !u!61 &61116414350360556
 BoxCollider2D:
   m_ObjectHideFlags: 0

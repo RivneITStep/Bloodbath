@@ -6,7 +6,9 @@ public class GunDataBase : MonoBehaviour
 {
 
     public List<GameObject> Guns = new List<GameObject>();
-    
+
+
+    public Sprite gunIsLocked;
     
     // Start is called before the first frame update
 
@@ -27,9 +29,23 @@ public class GunDataBase : MonoBehaviour
     {
         foreach(var g in Guns)
         {
-            if (g.GetComponent<ItemInfo>().item_id == id)
+            if (g.GetComponent<GunInfo>().item_id == id)
                 return g;
         }
         return null;
+    }
+
+    public GunDataBase GetGunsByClass(WeaponClass weaponClass)
+    {
+        List<GameObject> list = new List<GameObject>();
+
+        GunDataBase dataBase = new GunDataBase();
+        foreach(var g in Guns)
+        {
+            if (g.GetComponent<GunInfo>().weaponClass == weaponClass)
+                list.Add(g);
+        }
+        dataBase.Guns = list;
+        return dataBase;
     }
 }

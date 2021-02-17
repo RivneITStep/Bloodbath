@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: SniperR_barrett
   DisplayName: Barrett M82A1
   Rarity: 3
+  weaponClass: 4
 --- !u!61 &61812840884747346
 BoxCollider2D:
   m_ObjectHideFlags: 0

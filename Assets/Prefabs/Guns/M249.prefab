@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: MachineG_m249
   DisplayName: M249
   Rarity: 2
+  weaponClass: 5
 --- !u!61 &61682827719349716
 BoxCollider2D:
   m_ObjectHideFlags: 0

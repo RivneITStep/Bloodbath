@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: Assault_famas
   DisplayName: Famas
   Rarity: 0
+  weaponClass: 3
 --- !u!61 &61492999836568826
 BoxCollider2D:
   m_ObjectHideFlags: 0

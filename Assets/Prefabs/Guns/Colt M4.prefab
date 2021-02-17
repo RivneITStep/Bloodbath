@@ -146,6 +146,7 @@ MonoBehaviour:
   item_id: Assault_m4
   DisplayName: Colt M4
   Rarity: 0
+  weaponClass: 3
 --- !u!61 &61218264476385134
 BoxCollider2D:
   m_ObjectHideFlags: 0

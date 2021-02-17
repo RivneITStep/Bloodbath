@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts;
 using Assets.Scripts.Helpers;
+using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,16 @@ public class Player : MonoBehaviour
 
     bool itemFacingRight = true;
 
+
+    public List<GunInfo> unlockedGuns = new List<GunInfo>();
+
+    public GameObject gunDataBaseObject;
+
+    private GunDataBase gunDataBase;
+
    
 
-    public Camera camera;
+   // public Camera camera;
 
     // For items
 
@@ -31,13 +39,23 @@ public class Player : MonoBehaviour
     void Start()
     {
         this.anim = GetComponent<Animator>();
+
+        gunDataBase = gunDataBaseObject.GetComponent<GunDataBase>();
+        List<GunInfo> pistols = new List<GunInfo>();
+        foreach(var g in (gunDataBase.GetGunsByClass(WeaponClass.Pistol).Guns))
+        {
+            pistols.Add(g.GetComponent<GunInfo>());
+        }
+
+        unlockedGuns.AddRange(pistols);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        camera.transform.position = transform.position;
+        //camera.transform.position = transform.position;
+        Camera.main.transform.position = transform.position;
 
         Physics2D.queriesStartInColliders = false;
         hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, Distance);
@@ -141,7 +159,7 @@ public class Player : MonoBehaviour
             if(hit.collider.gameObject.tag == "NPC" && Input.GetKey(KeyCode.F))
             {
                 var npc = hit.collider.gameObject;
-                npc.GetComponent<GunShop>().OpenShop();
+                npc.GetComponent<INPCMenu>().OpenMenu();
             }
         }
         

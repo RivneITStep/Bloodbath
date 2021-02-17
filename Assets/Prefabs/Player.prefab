@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 266126802804898711}
   - component: {fileID: 266126802804898710}
   - component: {fileID: 266126802804898715}
-  - component: {fileID: 266126802804898714}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -171,19 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fb08495d39b0144999e2fb18fce040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemHelper: {fileID: 266126802804898714}
---- !u!114 &266126802804898714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266126802804898708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49783c48046ecb246b0e1aaff0f1281c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Distance: 0.4
+  unlockedGuns: []
+  gunDataBaseObject: {fileID: 8327724855744497546, guid: c77d07a0530eb1a43b00f860c64b4094,
+    type: 3}
+  camera: {fileID: 0}
+  Distance: 0.5
   itemInHand: 0
   handPoint: {fileID: 266126802007586173}
+  item: {fileID: 0}

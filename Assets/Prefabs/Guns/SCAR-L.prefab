@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: Assault_scarl
   DisplayName: SCAR-L
   Rarity: 1
+  weaponClass: 3
 --- !u!61 &61365048894897988
 BoxCollider2D:
   m_ObjectHideFlags: 0

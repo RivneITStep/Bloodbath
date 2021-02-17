@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: Assault_hkg63
   DisplayName: HK G36
   Rarity: 0
+  weaponClass: 3
 --- !u!61 &61673707241051862
 BoxCollider2D:
   m_ObjectHideFlags: 0

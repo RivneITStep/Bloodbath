@@ -146,6 +146,7 @@ MonoBehaviour:
   item_id: SniperR_M24
   DisplayName: M24
   Rarity: 2
+  weaponClass: 4
 --- !u!61 &61718012293059340
 BoxCollider2D:
   m_ObjectHideFlags: 0
