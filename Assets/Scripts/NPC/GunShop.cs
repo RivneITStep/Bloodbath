@@ -159,7 +159,19 @@ public class GunShop : MonoBehaviour, IPageable
 
        
         if (unlocked) {
-            Instantiate(gunDataBase.GetById(info.item_id)).transform.position = player.transform.position;
+
+            var g = Instantiate(gunDataBase.GetById(info.item_id));
+            if (player.itemInHand)
+            {
+                g.transform.position = player.transform.position;
+            }
+            else
+            {
+
+                player.item = g;
+                player.itemInHand = true;
+            }
+
 
             CloseShop();
         }

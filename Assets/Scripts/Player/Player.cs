@@ -35,10 +35,28 @@ public class Player : MonoBehaviour
     public Transform handPoint;
     public GameObject item;
 
+    // HUD
+    public GameObject hudObject;
+    private HUD hud;
+    private Stats stats;
+
+
+
+    private int healthPoints = 100;
+    private int armor = 5;
+
 
     void Start()
     {
         this.anim = GetComponent<Animator>();
+
+        hud = hudObject.GetComponent<HUD>();
+
+        stats = hud.statsObject.GetComponent<Stats>();
+
+        stats.SetHP(healthPoints);
+        stats.SetArmor(armor);
+
 
         gunDataBase = gunDataBaseObject.GetComponent<GunDataBase>();
         List<GunInfo> pistols = new List<GunInfo>();
@@ -100,7 +118,7 @@ public class Player : MonoBehaviour
         else
         {
             
-            anim.Play("Rest");
+         //   anim.Play("Rest");
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -160,10 +178,13 @@ public class Player : MonoBehaviour
             {
                 var npc = hit.collider.gameObject;
                 npc.GetComponent<INPCMenu>().OpenMenu();
+                hud.QuestComplited("Assault_scarl");
             }
         }
         
     }
+
+    
 
     private void Flip()
     {
