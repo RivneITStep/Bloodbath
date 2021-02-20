@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,17 +31,15 @@ public class HUD : MonoBehaviour
     }
 
 
-    public void QuestComplited(string item_id)
+    public void QuestComplited(QuestResult questResult)
     {
-        GameObject gun = gunDataBase.GetById(item_id);
-        var info = gun.GetComponent<GunInfo>();
+       
 
         var q = Instantiate(questPrevfab, questCanvas.transform);
-        
-        q.GetComponent<QuestDisplay>().Description.GetComponent<Text>().text = "Name: " + info.DisplayName + '\n' +
-            "Rariry: " + info.Rarity.ToString();
-        q.GetComponent<QuestDisplay>().Header.GetComponent<Text>().text = "Unlocked new gun";
-        q.GetComponent<QuestDisplay>().Image.GetComponent<Image>().sprite = gun.GetComponent<SpriteRenderer>().sprite;
+
+        q.GetComponent<QuestDisplay>().Description.GetComponent<Text>().text = questResult.description;
+        q.GetComponent<QuestDisplay>().Header.GetComponent<Text>().text = questResult.header;
+        q.GetComponent<QuestDisplay>().Image.GetComponent<Image>().sprite = questResult.image;
 
         currQuest = q;
         questCanvas.SetActive(true);

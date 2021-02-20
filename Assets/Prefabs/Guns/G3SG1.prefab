@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 61664898854808562}
   m_Layer: 0
   m_Name: G3SG1
-  m_TagString: Item
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

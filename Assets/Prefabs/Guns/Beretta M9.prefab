@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 61782354304649796}
   m_Layer: 0
   m_Name: Beretta M9
-  m_TagString: Item
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   item_id: Pistol_m9
   DisplayName: Beretta M9
   Rarity: 0
+  weaponClass: 0
 --- !u!61 &61782354304649796
 BoxCollider2D:
   m_ObjectHideFlags: 0

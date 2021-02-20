@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 61523111446979904}
   m_Layer: 9
   m_Name: M4A4-S
-  m_TagString: Item
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

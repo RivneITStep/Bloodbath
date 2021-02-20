@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 61001170298565998}
   m_Layer: 0
   m_Name: Beretta 87 Target
-  m_TagString: Item
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   item_id: Pistol_m87
   DisplayName: Beretta 87 Target
   Rarity: 0
+  weaponClass: 0
 --- !u!61 &61001170298565998
 BoxCollider2D:
   m_ObjectHideFlags: 0

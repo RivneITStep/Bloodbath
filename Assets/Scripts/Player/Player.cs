@@ -4,6 +4,7 @@ using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -21,8 +22,10 @@ public class Player : MonoBehaviour
 
     public GameObject gunDataBaseObject;
 
-    private GunDataBase gunDataBase;
+    public GunDataBase gunDataBase;
 
+
+    public List<Quest> quests = new List<Quest>();
    
 
    // public Camera camera;
@@ -66,6 +69,31 @@ public class Player : MonoBehaviour
         }
 
         unlockedGuns.AddRange(pistols);
+
+        Quest newQ = new Quest();
+        QuestResult questResult = new QuestResult();
+
+        newQ.isActive = true;
+        newQ.check = QuestFunctionsList.ScarLUnlockCheck;
+        newQ.doresult = QuestFunctionsList.ScalLUnclockDoResult;
+        newQ.quest_id = "unlock_scarL";
+
+        questResult.header = "Unlocked new gun";
+        questResult.description = "Name: " + gunDataBase.GetById("Assault_scarl").GetComponent<GunInfo>().DisplayName + '\n'
+            + "Rarity: " + gunDataBase.GetById("Assault_scarl").GetComponent<GunInfo>().Rarity.ToString();
+        questResult.image = gunDataBase.GetById("Assault_scarl").GetComponent<SpriteRenderer>().sprite;
+        
+        
+        newQ.result = questResult;
+
+        quests.Add(newQ);
+
+
+        foreach(var q in quests)
+        {
+            q.player = this;
+            
+        }
     }
 
     // Update is called once per frame
@@ -178,9 +206,22 @@ public class Player : MonoBehaviour
             {
                 var npc = hit.collider.gameObject;
                 npc.GetComponent<INPCMenu>().OpenMenu();
-                hud.QuestComplited("Assault_scarl");
+                
             }
         }
+
+
+        // Quest check
+
+        foreach(var q in quests)
+        {
+            var res = q.CheckComplite();
+            if(res != null)
+            {
+                hud.QuestComplited(res);
+            }
+        }
+
         
     }
 

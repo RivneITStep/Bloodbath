@@ -82,7 +82,10 @@
     <Compile Include="Assets\Scripts\Player\Inventory.cs" />
     <Compile Include="Assets\Scripts\Player\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\Quest.cs" />
     <Compile Include="Assets\Scripts\Player\QuestDisplay.cs" />
+    <Compile Include="Assets\Scripts\Player\QuestFunctionsList.cs" />
+    <Compile Include="Assets\Scripts\Player\QuestResult.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

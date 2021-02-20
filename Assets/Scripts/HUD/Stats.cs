@@ -20,19 +20,25 @@ public class Stats : MonoBehaviour
 
     void Start()
     {
-        hpSlider = hpObject.GetComponent<Slider>();
-        armorSlider = armorObject.GetComponent<Slider>();
+       // hpSlider = hpObject.GetComponent<Slider>();
+
+        //armorSlider = armorObject.GetComponent<Slider>();
     }
 
     public void SetHP(int hp)
     {
+        if(hpSlider == null)
+            hpSlider = hpObject.GetComponent<Slider>();
+
         hpSlider.value = hp;
         hpTextObject.GetComponent<Text>().text = hp.ToString();
     }
 
     public void SetArmor(int armor)
     {
-        if(armor > 0)
+        if(armorSlider == null)
+            armorSlider = armorObject.GetComponent<Slider>();
+        if (armor > 0)
         {
             armorObject.SetActive(true);
             armorSlider.value = armor;
