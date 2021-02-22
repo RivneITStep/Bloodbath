@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
     public GameObject hudObject;
     private HUD hud;
     private Stats stats;
+    private Ammo ammo;
+
 
 
 
@@ -56,6 +58,8 @@ public class Player : MonoBehaviour
         hud = hudObject.GetComponent<HUD>();
 
         stats = hud.statsObject.GetComponent<Stats>();
+
+        ammo = hud.ammoObject.GetComponent<Ammo>();
 
         stats.SetHP(healthPoints);
         stats.SetArmor(armor);
@@ -165,9 +169,27 @@ public class Player : MonoBehaviour
             }
             else
             {
+                if(item.tag == "Item")
+                    hud.ammoObject.SetActive(false);
                 itemInHand = false;
             }
         }
+
+        if (item != null && item.GetComponent<Weapon>() != null)
+        {
+            hud.ammoObject.SetActive(true);
+
+            var weap = item.GetComponent<Weapon>();
+            var info = item.GetComponent<GunInfo>();
+            ammo.textObject.GetComponent<Text>().text = weap.currAmmo.ToString() + '/' + weap.ammo.ToString();
+            switch (info.weaponClass) {
+                case WeaponClass.Pistol:
+                    ammo.bulletImageObject.GetComponent<Image>().sprite = ammo.BulletSprite9mm;
+                    break;
+            }
+
+        }
+
 
         if (itemInHand)
         {

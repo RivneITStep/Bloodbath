@@ -131,6 +131,9 @@ MonoBehaviour:
   startTime: 0.67
   BulletSpeed: 5.2
   BulletDestroyTime: 10
+  ammo: 120
+  maxAmmoInMagazine: 32
+  currAmmo: 32
 --- !u!114 &114512625806868980
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,12 @@ namespace Assets.Scripts
 
         public float BulletDestroyTime;
 
+        public int ammo;
+
+        public int maxAmmoInMagazine;
+
+        public int currAmmo;
+
 
 
         void Start()
@@ -38,10 +44,27 @@ namespace Assets.Scripts
 
         public void Fire()
         {
-            if (shotTime <= 0)
+            if (shotTime <= 0 && currAmmo > 0)
             {
                 Instantiate(bullet, bulletStartPoint.position, transform.rotation);
                 shotTime = startTime;
+                currAmmo--;
+            }
+            if(currAmmo == 0)
+            {
+                if(ammo > 0 && (ammo - maxAmmoInMagazine) > 0)
+                {
+                    ammo -= maxAmmoInMagazine;
+                    currAmmo = maxAmmoInMagazine;
+                }
+                else
+                {
+                    if(ammo > 0)
+                    {
+                        currAmmo = ammo;
+                        ammo = 0;
+                    }
+                }
             }
         }
 

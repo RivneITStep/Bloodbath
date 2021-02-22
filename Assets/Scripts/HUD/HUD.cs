@@ -13,15 +13,14 @@ public class HUD : MonoBehaviour
 
     public GameObject questPrevfab;
 
-    public GameObject gunDataBaseObject;
-
-    private GunDataBase gunDataBase;
-
+    public GameObject ammoObject;
+   
     private GameObject currQuest;
+
 
     void Start()
     {
-        gunDataBase = gunDataBaseObject.GetComponent<GunDataBase>();
+       
     }
 
     void Update()

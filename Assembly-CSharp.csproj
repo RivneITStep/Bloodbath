@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\GunDataBase.cs" />
     <Compile Include="Assets\Scripts\GunInfo.cs" />
     <Compile Include="Assets\Scripts\Helpers\SpriteHelper.cs" />
+    <Compile Include="Assets\Scripts\HUD\Ammo.cs" />
     <Compile Include="Assets\Scripts\HUD\HUD.cs" />
     <Compile Include="Assets\Scripts\HUD\Stats.cs" />
     <Compile Include="Assets\Scripts\Interfaces\INPCMenu.cs" />
