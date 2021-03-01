@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - NPC_Menu
   - Weapon
+  - Bullet
   layers:
   - Default
   - TransparentFX
