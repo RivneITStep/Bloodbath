@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     private HUD hud;
     private Stats stats;
     private Ammo ammo;
+    public GameObject reloadBarObject;
 
 
 
@@ -188,6 +189,19 @@ public class Player : MonoBehaviour
                     break;
             }
 
+
+            if (weap.isReloading && !reloadBarObject.active)
+            {
+                reloadBarObject.SetActive(true);     
+            }
+            if (weap.isReloading)
+            {
+                Vector3 scale = reloadBarObject.transform.localScale;
+                scale.x = ((weap.currReloadTime * 100 / weap.reloadTime) * 2) / 100;
+                reloadBarObject.transform.localScale = scale;
+            }
+            if(!weap.isReloading && reloadBarObject.active)
+                reloadBarObject.SetActive(false);
         }
 
 
@@ -253,21 +267,23 @@ public class Player : MonoBehaviour
     {
        
         isFacingRight = !isFacingRight;
-        
-        Vector3 theScale = transform.localScale;
-        
-        theScale.x *= -1;
-        
-        transform.localScale = theScale;
+
+        //Vector3 theScale = transform.localScale;
+
+        //theScale.x *= -1;
+
+        //transform.localScale = theScale;
+        transform.Rotate(0f,180f,0f);
     }
 
     private void FlipItem()
     {
         itemFacingRight = !itemFacingRight;
 
-        Vector3 theScale = item.transform.localScale;
-        theScale.x *= -1;
-        item.transform.localScale = theScale;
+        //Vector3 theScale = item.transform.localScale;
+        //theScale.x *= -1;
+        //item.transform.localScale = theScale;
+        transform.Rotate(0f, 180f, 0f);
     }
     private void OnDrawGizmos()
     {

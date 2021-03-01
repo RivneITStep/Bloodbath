@@ -21,6 +21,13 @@ namespace Assets.Scripts
         public float startTime;
 
 
+
+        public float reloadTime;
+        public float currReloadTime;
+
+        public bool isReloading = false;
+
+
         public float BulletSpeed;
 
         public float BulletDestroyTime;
@@ -49,28 +56,41 @@ namespace Assets.Scripts
                 Instantiate(bullet, bulletStartPoint.position, transform.rotation);
                 shotTime = startTime;
                 currAmmo--;
+                if (currAmmo == 0)
+                {
+                    currReloadTime = reloadTime;
+                    isReloading = !isReloading;
+                }
             }
-            if(currAmmo == 0)
+            
+            
+
+        }
+
+        void Update()
+        {
+            shotTime -= Time.deltaTime;
+            currReloadTime -= Time.deltaTime;
+
+            
+
+            if (isReloading && currReloadTime <= 0)
             {
-                if(ammo > 0 && (ammo - maxAmmoInMagazine) > 0)
+                if (ammo > 0 && (ammo - maxAmmoInMagazine) > 0)
                 {
                     ammo -= maxAmmoInMagazine;
                     currAmmo = maxAmmoInMagazine;
                 }
                 else
                 {
-                    if(ammo > 0)
+                    if (ammo > 0)
                     {
                         currAmmo = ammo;
                         ammo = 0;
                     }
                 }
+                isReloading = !isReloading;
             }
-        }
-
-        void Update()
-        {
-            shotTime -= Time.deltaTime;
         }
        
     }

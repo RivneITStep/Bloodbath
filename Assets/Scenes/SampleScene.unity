@@ -1781,6 +1781,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1189189645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7345682948341258604, guid: 01c7fb8d26836884896feddd47e5ed74,
+    type: 3}
+  m_PrefabInstance: {fileID: 266126802232296305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1214073380 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 266126802804898708, guid: 01c7fb8d26836884896feddd47e5ed74,
@@ -2990,6 +2996,16 @@ PrefabInstance:
       propertyPath: hudObject
       value: 
       objectReference: {fileID: 2069323798}
+    - target: {fileID: 266126802804898715, guid: 01c7fb8d26836884896feddd47e5ed74,
+        type: 3}
+      propertyPath: reloadBarObject
+      value: 
+      objectReference: {fileID: 1189189645}
+    - target: {fileID: 6776173939380948965, guid: 01c7fb8d26836884896feddd47e5ed74,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 266126802804898714, guid: 01c7fb8d26836884896feddd47e5ed74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 01c7fb8d26836884896feddd47e5ed74, type: 3}

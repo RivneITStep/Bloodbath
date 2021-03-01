@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3522066097819265762}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3466764144605302271}
   - component: {fileID: 114909741127114696}
   - component: {fileID: 61198430639531672}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Arsenal Firearms AF1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -99,8 +99,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 913774029
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300044, guid: 2826c543140616042a369e20dea6a25f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,6 +129,7 @@ MonoBehaviour:
   Damage: 11
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.1
+  reloadTime: 1
   BulletSpeed: 2.1
   BulletDestroyTime: 7
   ammo: 24
