@@ -27,7 +27,14 @@ public class Quest
 
     public QuestResult CheckComplite()
     {
-            return check(this,player) ? result : null;
+        if(check(this, player))
+        {
+            isActive = false;
+            return result;
+        }
+        return null;
+
+           
     }
 
     public void DoResult()

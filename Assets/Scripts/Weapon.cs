@@ -38,6 +38,8 @@ namespace Assets.Scripts
 
         public int currAmmo;
 
+        public float recoil;
+
 
 
         void Start()
@@ -51,12 +53,15 @@ namespace Assets.Scripts
 
         public void Fire()
         {
+            System.Random rnd = new System.Random();
             if (shotTime <= 0 && currAmmo > 0)
             {
-                Instantiate(bullet, bulletStartPoint.position, transform.rotation);
+                var rotation = transform.rotation;
+                rotation.z += (recoil/((shotTime == 0) ? -0.1f : shotTime)) * rnd.Next(-1,1) ; 
+                Instantiate(bullet, bulletStartPoint.position, rotation);
                 shotTime = startTime;
                 currAmmo--;
-                if (currAmmo == 0)
+                if (currAmmo == 0 && ammo > 0)
                 {
                     currReloadTime = reloadTime;
                     isReloading = !isReloading;
@@ -91,6 +96,21 @@ namespace Assets.Scripts
                 }
                 isReloading = !isReloading;
             }
+        }
+
+        float ToMin(float number)
+        {
+            float res;
+            int i_num = (int)number;
+            int count = 1;
+            for(;i_num / 10 >0 ;)
+            {
+                i_num /= 10;
+                count *= 10;
+            }
+            res = number / count;
+
+            return count;
         }
        
     }

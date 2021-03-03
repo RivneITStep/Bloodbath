@@ -128,13 +128,16 @@ MonoBehaviour:
   bulletStartPoint: {fileID: 3522066097819265762}
   Damage: 11
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
-  startTime: 0.1
+  startTime: 0.5
   reloadTime: 1
+  currReloadTime: 0
+  isReloading: 0
   BulletSpeed: 2.1
   BulletDestroyTime: 7
   ammo: 24
   maxAmmoInMagazine: 12
   currAmmo: 12
+  recoil: 0.004
 --- !u!114 &114909741127114696
 MonoBehaviour:
   m_ObjectHideFlags: 0

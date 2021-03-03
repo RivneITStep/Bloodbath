@@ -339,6 +339,7 @@ MonoBehaviour:
   Image: {fileID: 1694970120745756295}
   Header: {fileID: 1694970120295074561}
   Description: {fileID: 1694970121809782421}
+  lifeTime: 2
 --- !u!1 &1694970121809782421
 GameObject:
   m_ObjectHideFlags: 0

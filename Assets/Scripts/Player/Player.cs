@@ -170,9 +170,10 @@ public class Player : MonoBehaviour
             }
             else
             {
-                if(item.tag == "Item")
+                if(item.tag == "Weapon")
                     hud.ammoObject.SetActive(false);
                 itemInHand = false;
+                item = null;
             }
         }
 
@@ -203,6 +204,7 @@ public class Player : MonoBehaviour
             if(!weap.isReloading && reloadBarObject.active)
                 reloadBarObject.SetActive(false);
         }
+        
 
 
         if (itemInHand)
@@ -249,7 +251,7 @@ public class Player : MonoBehaviour
 
         // Quest check
 
-        foreach(var q in quests)
+        foreach(var q in quests.FindAll(x=>x.isActive))
         {
             var res = q.CheckComplite();
             if(res != null)
