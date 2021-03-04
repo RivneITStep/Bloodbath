@@ -170,6 +170,8 @@ public class GunShop : MonoBehaviour, IPageable
 
                 player.item = g;
                 player.itemInHand = true;
+                if (g.GetComponent<GunInfo>().weaponClass == WeaponClass.SniperRiffle)
+                    g.GetComponent<Sniper>().isOnPlayerHand = true;
             }
 
 

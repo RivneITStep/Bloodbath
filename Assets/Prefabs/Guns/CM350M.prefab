@@ -40,8 +40,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4082665480650061328}
   - component: {fileID: 4984962338546248378}
-  - component: {fileID: 2575917839843055665}
   - component: {fileID: 114453890282905674}
+  - component: {fileID: 114331703007528648}
   - component: {fileID: 61129211526608880}
   m_Layer: 0
   m_Name: CM350M
@@ -113,27 +113,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2575917839843055665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4006962863139976455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b2a098169b9d04c9426599f84203ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletStartPoint: {fileID: 7639127392274174658}
-  Damage: 10
-  bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
-  startTime: 2
-  BulletSpeed: 5
-  BulletDestroyTime: 0.5
-  ammo: 36
-  maxAmmoInMagazine: 8
-  currAmmo: 8
 --- !u!114 &114453890282905674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +129,32 @@ MonoBehaviour:
   DisplayName: CM350M
   Rarity: 1
   weaponClass: 2
+--- !u!114 &114331703007528648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006962863139976455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abe1dda00452f741b48556bd57cf80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletStartPoint: {fileID: 7639127392274174658}
+  Damage: 10
+  bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
+  startTime: 2
+  reloadTime: 5
+  currReloadTime: 0
+  isReloading: 0
+  BulletSpeed: 5
+  BulletDestroyTime: 0.5
+  ammo: 36
+  maxAmmoInMagazine: 8
+  currAmmo: 8
+  recoil: 0.05
+  shotCount: 5
 --- !u!61 &61129211526608880
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7410190580605957968}
   - component: {fileID: 7571957801890669574}
-  - component: {fileID: 8014917168300413491}
+  - component: {fileID: 114987086713250732}
   - component: {fileID: 114954861471359930}
   - component: {fileID: 61781570581048266}
   m_Layer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8014917168300413491
+--- !u!114 &114987086713250732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,18 +92,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3802435259337150484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b2a098169b9d04c9426599f84203ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 9abe1dda00452f741b48556bd57cf80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletStartPoint: {fileID: 7518321472013606648}
   Damage: 15
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
-  startTime: 5.5
+  startTime: 1.8
+  reloadTime: 3
+  currReloadTime: 0
+  isReloading: 0
   BulletSpeed: 5
   BulletDestroyTime: 0.4
   ammo: 20
   maxAmmoInMagazine: 5
   currAmmo: 5
+  recoil: 0.045
+  shotCount: 7
 --- !u!114 &114954861471359930
 MonoBehaviour:
   m_ObjectHideFlags: 0

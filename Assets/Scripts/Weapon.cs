@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Weapon : MonoBehaviour
+    public class Weapon : MonoBehaviour,IWeapon
     {
 
         public Transform bulletStartPoint;
@@ -53,10 +54,16 @@ namespace Assets.Scripts
 
         public void Fire()
         {
+           
+
+
+             
             System.Random rnd = new System.Random();
             if (shotTime <= 0 && currAmmo > 0)
             {
-                var rotation = transform.rotation;
+                Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                var rotation = Quaternion.Euler(0f, 0f, rotateZ); ;
                 rotation.z += (recoil/((shotTime == 0) ? -0.1f : shotTime)) * rnd.Next(-1,1) ; 
                 Instantiate(bullet, bulletStartPoint.position, rotation);
                 shotTime = startTime;
@@ -98,20 +105,41 @@ namespace Assets.Scripts
             }
         }
 
-        float ToMin(float number)
-        {
-            float res;
-            int i_num = (int)number;
-            int count = 1;
-            for(;i_num / 10 >0 ;)
-            {
-                i_num /= 10;
-                count *= 10;
-            }
-            res = number / count;
-
-            return count;
-        }
        
+
+        public void Reload()
+        {
+            ammo += currAmmo;
+            currAmmo = 0;
+
+        }
+
+        
+
+
+        public int GetCurrAmmo()
+        {
+            return currAmmo;
+        }
+
+        public int GetAmmo()
+        {
+            return ammo;
+        }
+
+        public bool GetIsReloading()
+        {
+            return isReloading;
+        }
+
+        public float GetCurrReloadTime()
+        {
+            return currReloadTime;
+        }
+
+        public float GetReloadTime()
+        {
+            return reloadTime;
+        }
     }
 }

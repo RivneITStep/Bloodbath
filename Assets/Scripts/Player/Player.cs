@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
         gunDataBase = gunDataBaseObject.GetComponent<GunDataBase>();
         List<GunInfo> pistols = new List<GunInfo>();
-        foreach(var g in (gunDataBase.GetGunsByClass(WeaponClass.Pistol).Guns))
+        foreach(var g in (gunDataBase.Guns))
         {
             pistols.Add(g.GetComponent<GunInfo>());
         }
@@ -162,10 +162,14 @@ public class Player : MonoBehaviour
             {
                
 
-                if (hit.collider != null && hit.collider.gameObject.tag == "Item")
+                if (hit.collider != null && hit.collider.gameObject.tag == "Weapon")
                 {
                     itemInHand = true;
                     item = hit.collider.gameObject;
+                    if(item.GetComponent<GunInfo>().weaponClass == WeaponClass.SniperRiffle)
+                    {
+                        item.GetComponent<Sniper>().isOnPlayerHand = true;
+                    }
                 }
             }
             else
@@ -173,17 +177,21 @@ public class Player : MonoBehaviour
                 if(item.tag == "Weapon")
                     hud.ammoObject.SetActive(false);
                 itemInHand = false;
+                if (item.GetComponent<GunInfo>().weaponClass == WeaponClass.SniperRiffle)
+                {
+                    item.GetComponent<Sniper>().isOnPlayerHand = false;
+                }
                 item = null;
             }
         }
 
-        if (item != null && item.GetComponent<Weapon>() != null)
+        if (item != null && item.GetComponent<IWeapon>() != null)
         {
             hud.ammoObject.SetActive(true);
 
-            var weap = item.GetComponent<Weapon>();
+            var weap = item.GetComponent<IWeapon>();
             var info = item.GetComponent<GunInfo>();
-            ammo.textObject.GetComponent<Text>().text = weap.currAmmo.ToString() + '/' + weap.ammo.ToString();
+            ammo.textObject.GetComponent<Text>().text = weap.GetCurrAmmo().ToString() + '/' + weap.GetAmmo().ToString();
             switch (info.weaponClass) {
                 case WeaponClass.Pistol:
                     ammo.bulletImageObject.GetComponent<Image>().sprite = ammo.BulletSprite9mm;
@@ -191,17 +199,17 @@ public class Player : MonoBehaviour
             }
 
 
-            if (weap.isReloading && !reloadBarObject.active)
+            if (weap.GetIsReloading() && !reloadBarObject.active)
             {
                 reloadBarObject.SetActive(true);     
             }
-            if (weap.isReloading)
+            if (weap.GetIsReloading())
             {
                 Vector3 scale = reloadBarObject.transform.localScale;
-                scale.x = ((weap.currReloadTime * 100 / weap.reloadTime) * 2) / 100;
+                scale.x = ((weap.GetCurrReloadTime() * 100 / weap.GetReloadTime()) * 2) / 100;
                 reloadBarObject.transform.localScale = scale;
             }
-            if(!weap.isReloading && reloadBarObject.active)
+            if(!weap.GetIsReloading() && reloadBarObject.active)
                 reloadBarObject.SetActive(false);
         }
         
@@ -224,18 +232,18 @@ public class Player : MonoBehaviour
 
 
 
-            Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - item.transform.position;
-            float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - item.transform.position;
+           // float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
             
-            item.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ);
+           // item.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ);
 
 
         }
 
         if(Input.GetMouseButton(0) && itemInHand)
         {
-            item.GetComponent<Weapon>().Fire();
+            item.GetComponent<IWeapon>().Fire();
         }
 
         if(hit.collider != null)
@@ -285,7 +293,7 @@ public class Player : MonoBehaviour
         //Vector3 theScale = item.transform.localScale;
         //theScale.x *= -1;
         //item.transform.localScale = theScale;
-        transform.Rotate(0f, 180f, 0f);
+        item.transform.Rotate(0f, 180f, 0f);
     }
     private void OnDrawGizmos()
     {

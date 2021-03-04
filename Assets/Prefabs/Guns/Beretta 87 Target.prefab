@@ -130,11 +130,14 @@ MonoBehaviour:
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.1
   reloadTime: 0.9
+  currReloadTime: 0
+  isReloading: 0
   BulletSpeed: 2
   BulletDestroyTime: 7
   ammo: 25
   maxAmmoInMagazine: 10
   currAmmo: 10
+  recoil: 0.005
 --- !u!114 &114769670719385860
 MonoBehaviour:
   m_ObjectHideFlags: 0
