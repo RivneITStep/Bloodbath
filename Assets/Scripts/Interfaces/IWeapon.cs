@@ -27,6 +27,9 @@ namespace Assets.Scripts.Interfaces
 
          float GetReloadTime();
 
+        bool GetIsFacingRight();
+        void SetIsFacingRight(bool value);
+
 
     }
 }

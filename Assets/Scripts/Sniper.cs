@@ -39,6 +39,8 @@ public class Sniper : MonoBehaviour,IWeapon
 
     public float distance;
 
+    public bool isFacingRight = true;
+
     void Start()
     {
         bullet.GetComponent<Bullet>().destroyTime = BulletDestroyTime;
@@ -141,5 +143,15 @@ public class Sniper : MonoBehaviour,IWeapon
         currAmmo = 0;
     }
 
-    
+    public bool GetIsFacingRight()
+    {
+        return isFacingRight;
+    }
+
+    public void SetIsFacingRight(bool value)
+    {
+        isFacingRight = value;
+    }
+
+
 }

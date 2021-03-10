@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     bool isFacingRight = true;
 
-    bool itemFacingRight = true;
+   
 
 
     public List<GunInfo> unlockedGuns = new List<GunInfo>();
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
             if (!isFacingRight)
             {
                 Flip();
-                if (itemInHand && !itemFacingRight)
+                if (itemInHand && !item.GetComponent<IWeapon>().GetIsFacingRight())
                 {
                     FlipItem();
                 }
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
             if (isFacingRight)
             {
                 Flip();
-                if (itemInHand && itemFacingRight)
+                if (itemInHand && item.GetComponent<IWeapon>().GetIsFacingRight())
                 {
                     FlipItem();
                 }
@@ -166,6 +166,11 @@ public class Player : MonoBehaviour
                 {
                     itemInHand = true;
                     item = hit.collider.gameObject;
+                    if (isFacingRight && !item.GetComponent<IWeapon>().GetIsFacingRight())
+                    {
+                        FlipItem();
+                    }
+
                     if(item.GetComponent<GunInfo>().weaponClass == WeaponClass.SniperRiffle)
                     {
                         item.GetComponent<Sniper>().isOnPlayerHand = true;
@@ -182,6 +187,7 @@ public class Player : MonoBehaviour
                     item.GetComponent<Sniper>().isOnPlayerHand = false;
                 }
                 item = null;
+                reloadBarObject.SetActive(false);
             }
         }
 
@@ -288,7 +294,7 @@ public class Player : MonoBehaviour
 
     private void FlipItem()
     {
-        itemFacingRight = !itemFacingRight;
+        item.GetComponent<IWeapon>().SetIsFacingRight(!item.GetComponent<IWeapon>().GetIsFacingRight());
 
         //Vector3 theScale = item.transform.localScale;
         //theScale.x *= -1;

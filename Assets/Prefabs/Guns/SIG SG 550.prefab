@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 913774029
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300028, guid: 2826c543140616042a369e20dea6a25f, type: 3}
+  m_Sprite: {fileID: 21300026, guid: 9e19e15d795402b4386f812bff1e1194, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,11 +130,14 @@ MonoBehaviour:
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 1.4
   reloadTime: 2.2
+  currReloadTime: 0
+  isReloading: 0
   BulletSpeed: 6.3
   BulletDestroyTime: 10
   ammo: 80
   maxAmmoInMagazine: 18
   currAmmo: 18
+  recoil: 0
 --- !u!114 &114928308182146132
 MonoBehaviour:
   m_ObjectHideFlags: 0

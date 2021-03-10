@@ -41,6 +41,8 @@ namespace Assets.Scripts
 
         public float recoil;
 
+        public bool isFacingRight = true;
+
 
 
         void Start()
@@ -140,6 +142,16 @@ namespace Assets.Scripts
         public float GetReloadTime()
         {
             return reloadTime;
+        }
+
+        public bool GetIsFacingRight()
+        {
+            return isFacingRight;
+        }
+
+        public void SetIsFacingRight(bool value)
+        {
+            isFacingRight = value;
         }
     }
 }

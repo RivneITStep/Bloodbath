@@ -72,12 +72,12 @@ SpriteRenderer:
   m_SortingLayerID: 913774029
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300054, guid: 2826c543140616042a369e20dea6a25f, type: 3}
+  m_Sprite: {fileID: 21300052, guid: 9e19e15d795402b4386f812bff1e1194, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.01, y: 0.33}
+  m_Size: {x: 1.01, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,11 +100,14 @@ MonoBehaviour:
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 4
   reloadTime: 4
+  currReloadTime: 0
+  isReloading: 0
   BulletSpeed: 5.5
   BulletDestroyTime: 5
   ammo: 240
   maxAmmoInMagazine: 60
   currAmmo: 60
+  recoil: 0
 --- !u!114 &114261040330154404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +141,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.01, y: 0.33}
-    newSize: {x: 1.01, y: 0.33}
+    oldSize: {x: 1.01, y: 0.32}
+    newSize: {x: 1.01, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

@@ -37,6 +37,8 @@ public class Shotgun : MonoBehaviour,IWeapon
 
     public int shotCount;
 
+    public bool isFacingRight = true;
+
     void Start()
     {
         bullet.GetComponent<Bullet>().destroyTime = BulletDestroyTime;
@@ -124,5 +126,15 @@ public class Shotgun : MonoBehaviour,IWeapon
     public float GetReloadTime()
     {
         return reloadTime;
+    }
+
+    public bool GetIsFacingRight()
+    {
+        return isFacingRight;
+    }
+
+    public void SetIsFacingRight(bool value)
+    {
+        isFacingRight = value;
     }
 }

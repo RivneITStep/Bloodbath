@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 913774029
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300034, guid: 2826c543140616042a369e20dea6a25f, type: 3}
+  m_Sprite: {fileID: 21300032, guid: 9e19e15d795402b4386f812bff1e1194, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletStartPoint: {fileID: 7518321472013606648}
   Damage: 15
-  bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
+  bullet: {fileID: 8455137479299348524, guid: c82080d93f1811b4cb735823edcd56f6, type: 3}
   startTime: 1.8
   reloadTime: 3
   currReloadTime: 0
