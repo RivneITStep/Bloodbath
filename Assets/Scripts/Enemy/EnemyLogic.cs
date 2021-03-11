@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Interfaces;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -44,19 +45,19 @@ public class EnemyLogic : MonoBehaviour
 
 
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            healthPoints -= (int)collision.gameObject.GetComponent<Bullet>().damage;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Bullet")
+    //    {
+    //        healthPoints -= (int)collision.gameObject.GetComponent<Bullet>().damage;
+    //    }
+    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            healthPoints -= (int)collision.gameObject.GetComponent<Bullet>().damage;
+            healthPoints -= (int)collision.gameObject.GetComponent<IBullet>().GetDamage();
         }
     }
 }

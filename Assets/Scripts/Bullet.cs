@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Interfaces;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour,IBullet
 
 
 {
@@ -28,5 +29,10 @@ public class Bullet : MonoBehaviour
     void DestroyBullet()
     {
         Destroy(gameObject);
+    }
+
+    public float GetDamage()
+    {
+        return damage;
     }
 }

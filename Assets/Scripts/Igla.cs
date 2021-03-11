@@ -57,11 +57,18 @@ public class Igla : MonoBehaviour,IWeapon
     {
         if (isTargetLocked)
         {
-            
 
-            var r =Instantiate(rocket, bulletStartPoint);
-            r.GetComponent<IglaRocket>().target = trigeredObject;
-            --currAmmo;
+            if (currAmmo > 0)
+            {
+                var r = Instantiate(rocket, bulletStartPoint.position, Quaternion.Euler(0, 0, 0));
+                r.GetComponent<IglaRocket>().target = trigeredObject;
+                --currAmmo;
+                if (currAmmo == 0 && ammo > 0)
+                {
+                    currReloadTime = reloadTime;
+                    isReloading = !isReloading;
+                }
+            }
         }
     }
 
@@ -92,7 +99,8 @@ public class Igla : MonoBehaviour,IWeapon
 
     public void Reload()
     {
-        
+        ammo += currAmmo;
+        currAmmo = 0;
     }
 
     // Start is called before the first frame update
@@ -109,6 +117,25 @@ public class Igla : MonoBehaviour,IWeapon
     {
         if (isOnPlayerHand)
         {
+            currReloadTime -= Time.deltaTime;
+
+            if (isReloading && currReloadTime <= 0)
+            {
+                if (ammo > 0 && (ammo - maxAmmoInMagazine) > 0)
+                {
+                    ammo -= maxAmmoInMagazine;
+                    currAmmo = maxAmmoInMagazine;
+                }
+                else
+                {
+                    if (ammo > 0)
+                    {
+                        currAmmo = ammo;
+                        ammo = 0;
+                    }
+                }
+                isReloading = !isReloading;
+            }
             if (!isTrigering && !isTargetLocked)
             {
                 var obj_arr = (Tank[])FindObjectsOfType(typeof(Tank));
@@ -211,5 +238,10 @@ public class Igla : MonoBehaviour,IWeapon
     public void SetIsFacingRight(bool value)
     {
         isFacingRight = value;
+    }
+
+    public void SetIsOnPlayerHand(bool value)
+    {
+        isOnPlayerHand = value;
     }
 }

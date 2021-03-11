@@ -153,5 +153,10 @@ public class Sniper : MonoBehaviour,IWeapon
         isFacingRight = value;
     }
 
+    public void SetIsOnPlayerHand(bool value)
+    {
+        isOnPlayerHand = value;
+    }
+
 
 }

@@ -30,6 +30,8 @@ namespace Assets.Scripts.Interfaces
         bool GetIsFacingRight();
         void SetIsFacingRight(bool value);
 
+        void SetIsOnPlayerHand(bool value);
+
 
     }
 }

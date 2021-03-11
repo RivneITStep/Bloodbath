@@ -21,7 +21,7 @@ namespace Assets.Scripts
 
         public float startTime;
 
-
+        public bool isOnPlayerHand = false;
 
         public float reloadTime;
         public float currReloadTime;
@@ -152,6 +152,11 @@ namespace Assets.Scripts
         public void SetIsFacingRight(bool value)
         {
             isFacingRight = value;
+        }
+
+        public void SetIsOnPlayerHand(bool value)
+        {
+            isOnPlayerHand = value;
         }
     }
 }

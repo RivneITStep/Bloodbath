@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\HUD\Stats.cs" />
     <Compile Include="Assets\Scripts\Igla.cs" />
     <Compile Include="Assets\Scripts\IglaRocket.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IBullet.cs" />
     <Compile Include="Assets\Scripts\Interfaces\INPCMenu.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IPageable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IVehicle.cs" />

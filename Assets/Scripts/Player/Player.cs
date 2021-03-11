@@ -154,6 +154,14 @@ public class Player : MonoBehaviour
          //   anim.Play("Rest");
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if(item != null && item.GetComponent<IWeapon>() != null)
+            {
+                item.GetComponent<IWeapon>().Reload();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
 
@@ -171,10 +179,7 @@ public class Player : MonoBehaviour
                         FlipItem();
                     }
 
-                    if(item.GetComponent<GunInfo>().weaponClass == WeaponClass.SniperRiffle)
-                    {
-                        item.GetComponent<Sniper>().isOnPlayerHand = true;
-                    }
+                    item.GetComponent<IWeapon>().SetIsOnPlayerHand(true);
                 }
             }
             else
@@ -182,10 +187,7 @@ public class Player : MonoBehaviour
                 if(item.tag == "Weapon")
                     hud.ammoObject.SetActive(false);
                 itemInHand = false;
-                if (item.GetComponent<GunInfo>().weaponClass == WeaponClass.SniperRiffle)
-                {
-                    item.GetComponent<Sniper>().isOnPlayerHand = false;
-                }
+                item.GetComponent<IWeapon>().SetIsOnPlayerHand(false);
                 item = null;
                 reloadBarObject.SetActive(false);
             }
