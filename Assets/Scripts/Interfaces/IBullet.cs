@@ -10,5 +10,7 @@ namespace Assets.Scripts.Interfaces
     {
 
         float GetDamage();
+
+        void DestroyBullet();
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour,IVehicle
 {
+
+
+    public int healthPoints;
     public GameObject GetGameObject()
     {
         return gameObject;
@@ -20,5 +23,15 @@ public class Tank : MonoBehaviour,IVehicle
     void Update()
     {
         
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            healthPoints -= (int)collision.gameObject.GetComponent<IBullet>().GetDamage();
+            collision.gameObject.GetComponent<IBullet>().DestroyBullet();
+        }
     }
 }

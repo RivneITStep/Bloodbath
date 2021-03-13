@@ -17,6 +17,16 @@ public class IglaRocket : MonoBehaviour,IBullet
     public GameObject target;
 
     private bool isExplosing = false;
+
+    public float distanceBeforeFlyUp;
+
+    public bool goDown = false;
+
+    public Igla igla;
+
+    public GameObject explosionParticlesObject;
+
+
     void Start()
     {
         Invoke("DestroyRocket", destroyTime);
@@ -30,16 +40,32 @@ public class IglaRocket : MonoBehaviour,IBullet
             if (target != null)
             {
 
-                var distance = Mathf.Abs(target.transform.position.x - transform.position.x);
-                var height = target.transform.position.y - transform.position.y/**((target.transform.position.y < transform.position.y) ? -1 : 1)*/;
-                transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan(height / distance) / (Mathf.PI / 180)));
-                transform.Translate(Vector2.right * speed * Time.deltaTime);
-                if(transform.position.x == target.transform.position.x &&
-                    transform.position.y == target.transform.position.y)
+                if (goDown)
                 {
-                    isExplosing = !isExplosing;
-                    DestroyRocket();
+
+                    var distance = Mathf.Abs(target.transform.position.x - transform.position.x);
+                    var height = target.transform.position.y - transform.position.y/**((target.transform.position.y < transform.position.y) ? -1 : 1)*/;
+                    transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan(height / distance) / (Mathf.PI / 180)));
+                    transform.Translate(Vector2.right * speed * 1.5f * Time.deltaTime);
                 }
+                else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= distanceBeforeFlyUp)
+                {
+                    if (transform.rotation.z != 90f)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 90);
+                    }
+                    transform.Translate(Vector2.right * speed * 1.5f * Time.deltaTime);
+                    if (Mathf.Abs(transform.position.y - target.transform.position.y) >= distanceBeforeFlyUp * 2)
+                        goDown = true;
+                }
+                else
+                {
+                    var distance = Mathf.Abs(target.transform.position.x - transform.position.x);
+                    var height = target.transform.position.y - transform.position.y/**((target.transform.position.y < transform.position.y) ? -1 : 1)*/;
+                    transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan(height / distance) / (Mathf.PI / 180)));
+                    transform.Translate(Vector2.right * speed * Time.deltaTime);
+                }
+                
             }
         }
     }
@@ -47,7 +73,12 @@ public class IglaRocket : MonoBehaviour,IBullet
     void DestroyRocket()
     {
         Explose();
-       // Destroy(gameObject);
+       Destroy(gameObject);
+        igla.isTargetLocked = false;
+        foreach (var o in igla.showTrigeringObj)
+        {
+            Destroy(o);
+        }
     }
     public float GetDamage()
     {
@@ -56,17 +87,18 @@ public class IglaRocket : MonoBehaviour,IBullet
 
     public void Explose()
     {
-       
-        var system =  GetComponent<ParticleSystem>();
-        var shape = system.shape;
-        shape.shapeType = ParticleSystemShapeType.Circle;
-        shape.radius = 1f;
-        system.startLifetime = 2f;
-        system.loop = false;
+
+        var r = Instantiate(explosionParticlesObject, transform.position, Quaternion.Euler(0, 0, 0));
+        r.GetComponent<ParticleSystem>().Play(true);
+        
         
         
 
 
     }
 
+    public void DestroyBullet()
+    {
+        DestroyRocket();
+    }
 }

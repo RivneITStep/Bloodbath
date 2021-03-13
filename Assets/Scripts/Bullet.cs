@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour,IBullet
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    void DestroyBullet()
+    public void DestroyBullet()
     {
         Destroy(gameObject);
     }

@@ -20,7 +20,7 @@ public class Igla : MonoBehaviour,IWeapon
 
     public bool isTargetLocked;
 
-    private List<GameObject> showTrigeringObj = new List<GameObject>();
+    public List<GameObject> showTrigeringObj = new List<GameObject>();
 
     public float trigeringTime;
     private float currTrigerTime;
@@ -52,17 +52,27 @@ public class Igla : MonoBehaviour,IWeapon
 
     public bool isOnPlayerHand = false;
 
+    public float distanceBeforeFlyUp;
+
+
+    private ParticleSystem particleSystem;
+
 
     public void Fire()
     {
         if (isTargetLocked)
         {
-
+            
             if (currAmmo > 0)
             {
                 var r = Instantiate(rocket, bulletStartPoint.position, Quaternion.Euler(0, 0, 0));
                 r.GetComponent<IglaRocket>().target = trigeredObject;
+                r.GetComponent<IglaRocket>().distanceBeforeFlyUp = distanceBeforeFlyUp;
+                r.GetComponent<IglaRocket>().igla = this;
                 --currAmmo;
+                particleSystem.Play(true);
+               
+
                 if (currAmmo == 0 && ammo > 0)
                 {
                     currReloadTime = reloadTime;
@@ -110,6 +120,8 @@ public class Igla : MonoBehaviour,IWeapon
         rocket.GetComponent<IglaRocket>().destroyTime = BulletDestroyTime;
         rocket.GetComponent<IglaRocket>().speed = BulletSpeed;
 
+        particleSystem = GetComponent<ParticleSystem>();
+
     }
 
     // Update is called once per frame
@@ -136,93 +148,96 @@ public class Igla : MonoBehaviour,IWeapon
                 }
                 isReloading = !isReloading;
             }
-            if (!isTrigering && !isTargetLocked)
+            if (!isReloading && currAmmo > 0)
             {
-                var obj_arr = (Tank[])FindObjectsOfType(typeof(Tank));
-                foreach (var obj in obj_arr)
+                if (!isTrigering && !isTargetLocked)
                 {
-                    if ((transform.position - obj.GetGameObject().transform.position).sqrMagnitude < distance)
+                    var obj_arr = (Tank[])FindObjectsOfType(typeof(Tank));
+                    foreach (var obj in obj_arr)
                     {
-                        trigeredObject = obj.gameObject;
-                        var gameObj = obj.GetGameObject();
-
-                        var left_d = new Vector3(gameObj.transform.position.x - gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 - offset,
-                            gameObj.transform.position.y - gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 - offset,
-                            0);
-                        var left_u = new Vector3(gameObj.transform.position.x - gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 - offset,
-                            gameObj.transform.position.y + gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 + offset,
-                            0);
-                        var right_d = new Vector3(gameObj.transform.position.x + gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 + offset,
-                            gameObj.transform.position.y - gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 - offset,
-                            0);
-                        var right_u = new Vector3(gameObj.transform.position.x + gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 + offset,
-                           gameObj.transform.position.y + gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 + offset,
-                           0);
-                        showTrigeringObj.Add(Instantiate(startTrigeringObj, left_d, Quaternion.Euler(0, 0, 0)));
-                        showTrigeringObj.Add(Instantiate(startTrigeringObj, left_u, Quaternion.Euler(0, 0, -90)));
-                        showTrigeringObj.Add(Instantiate(startTrigeringObj, right_u, Quaternion.Euler(0, 0, 180)));
-                        showTrigeringObj.Add(Instantiate(startTrigeringObj, right_d, Quaternion.Euler(0, 0, 90)));
-
-                        isTrigering = true;
-                        currTrigerTime = trigeringTime;
-                    }
-                }
-            }
-            else
-            {
-                currTrigerTime -= Time.deltaTime;
-                if (currTrigerTime <= 0)
-                {
-                    if (!isTargetLocked)
-                    {
-                        foreach (var o in showTrigeringObj)
+                        if (Mathf.Abs(transform.position.x - obj.GetGameObject().transform.position.x) <= distance)
                         {
-                            Destroy(o);
+                            trigeredObject = obj.gameObject;
+                            var gameObj = obj.GetGameObject();
+
+                            var left_d = new Vector3(gameObj.transform.position.x - gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 - offset,
+                                gameObj.transform.position.y - gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 - offset,
+                                0);
+                            var left_u = new Vector3(gameObj.transform.position.x - gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 - offset,
+                                gameObj.transform.position.y + gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 + offset,
+                                0);
+                            var right_d = new Vector3(gameObj.transform.position.x + gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 + offset,
+                                gameObj.transform.position.y - gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 - offset,
+                                0);
+                            var right_u = new Vector3(gameObj.transform.position.x + gameObj.GetComponent<BoxCollider2D>().bounds.size.x / 2 + offset,
+                               gameObj.transform.position.y + gameObj.GetComponent<BoxCollider2D>().bounds.size.y / 2 + offset,
+                               0);
+                            showTrigeringObj.Add(Instantiate(startTrigeringObj, left_d, Quaternion.Euler(0, 0, 0)));
+                            showTrigeringObj.Add(Instantiate(startTrigeringObj, left_u, Quaternion.Euler(0, 0, -90)));
+                            showTrigeringObj.Add(Instantiate(startTrigeringObj, right_u, Quaternion.Euler(0, 0, 180)));
+                            showTrigeringObj.Add(Instantiate(startTrigeringObj, right_d, Quaternion.Euler(0, 0, 90)));
+
+                            isTrigering = true;
+                            currTrigerTime = trigeringTime;
                         }
                     }
-                    isTargetLocked = true;
-
-                    if (isTrigering)
+                }
+                else
+                {
+                    currTrigerTime -= Time.deltaTime;
+                    if (currTrigerTime <= 0)
                     {
-                        var left = new Vector3(trigeredObject.transform.position.x - trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x / 2 - offset,
-                            trigeredObject.transform.position.y,
-                            0);
-                        var right = new Vector3(trigeredObject.transform.position.x + trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x / 2 + offset,
-                            trigeredObject.transform.position.y,
-                            0);
-                        var up = new Vector3(trigeredObject.transform.position.x,
-                            trigeredObject.transform.position.y + trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y / 2 + offset,
-                            0);
-                        var down = new Vector3(trigeredObject.transform.position.x,
-                           trigeredObject.transform.position.y - trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y / 2 - offset,
-                           0);
+                        if (!isTargetLocked)
+                        {
+                            foreach (var o in showTrigeringObj)
+                            {
+                                Destroy(o);
+                            }
+                        }
+                        isTargetLocked = true;
+
+                        if (isTrigering)
+                        {
+                            var left = new Vector3(trigeredObject.transform.position.x - trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x / 2 - offset,
+                                trigeredObject.transform.position.y,
+                                0);
+                            var right = new Vector3(trigeredObject.transform.position.x + trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x / 2 + offset,
+                                trigeredObject.transform.position.y,
+                                0);
+                            var up = new Vector3(trigeredObject.transform.position.x,
+                                trigeredObject.transform.position.y + trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y / 2 + offset,
+                                0);
+                            var down = new Vector3(trigeredObject.transform.position.x,
+                               trigeredObject.transform.position.y - trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y / 2 - offset,
+                               0);
 
 
-                        var left_obj = Instantiate(targetLockedObj, left, Quaternion.Euler(0, 0, 0));
-                        left_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
-                            (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y + offset * 2) / left_obj.GetComponent<BoxCollider2D>().bounds.size.y);
+                            var left_obj = Instantiate(targetLockedObj, left, Quaternion.Euler(0, 0, 0));
+                            left_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
+                                (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y + offset * 2) / left_obj.GetComponent<BoxCollider2D>().bounds.size.y);
 
-                        var right_obj = Instantiate(targetLockedObj, right, Quaternion.Euler(0, 0, 0));
-                        right_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
-                            (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y + offset * 2) / right_obj.GetComponent<BoxCollider2D>().bounds.size.y);
+                            var right_obj = Instantiate(targetLockedObj, right, Quaternion.Euler(0, 0, 0));
+                            right_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
+                                (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.y + offset * 2) / right_obj.GetComponent<BoxCollider2D>().bounds.size.y);
 
-                        var up_obj = Instantiate(targetLockedObj, up, Quaternion.Euler(0, 0, 90));
-                        up_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
-                            (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x + offset * 2) / up_obj.GetComponent<BoxCollider2D>().bounds.size.x);
+                            var up_obj = Instantiate(targetLockedObj, up, Quaternion.Euler(0, 0, 90));
+                            up_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
+                                (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x + offset * 2) / up_obj.GetComponent<BoxCollider2D>().bounds.size.x);
 
-                        var down_obj = Instantiate(targetLockedObj, down, Quaternion.Euler(0, 0, 90));
-                        down_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
-                            (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x + offset * 2) / down_obj.GetComponent<BoxCollider2D>().bounds.size.x);
+                            var down_obj = Instantiate(targetLockedObj, down, Quaternion.Euler(0, 0, 90));
+                            down_obj.transform.localScale = new Vector3(left_obj.transform.localScale.x,
+                                (trigeredObject.GetComponent<BoxCollider2D>().bounds.size.x + offset * 2) / down_obj.GetComponent<BoxCollider2D>().bounds.size.x);
 
-                        showTrigeringObj.Add(left_obj);
-                        showTrigeringObj.Add(right_obj);
-                        showTrigeringObj.Add(up_obj);
-                        showTrigeringObj.Add(down_obj);
+                            showTrigeringObj.Add(left_obj);
+                            showTrigeringObj.Add(right_obj);
+                            showTrigeringObj.Add(up_obj);
+                            showTrigeringObj.Add(down_obj);
 
-                        
 
+
+                        }
+                        isTrigering = false;
                     }
-                    isTrigering = false;
                 }
             }
             

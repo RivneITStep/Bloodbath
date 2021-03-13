@@ -56,10 +56,10 @@ public class Sniper : MonoBehaviour,IWeapon
         {
             shotTime -= Time.deltaTime;
             currReloadTime -= Time.deltaTime;
-            var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition) /*- transform.position*/;
 
 
-            if ( Mathf.Abs( pos.x) < distance + Mathf.Abs(transform.position.x) && Mathf.Abs(pos.y - transform.position.y) < distance) {
+            if ( Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(transform.position.x)) < distance && Mathf.Abs(pos.y - transform.position.y) < distance) {
              
                 Camera.main.transform.position = pos;
 
@@ -67,7 +67,7 @@ public class Sniper : MonoBehaviour,IWeapon
             else
             {
                 var tmp = transform.position;
-                tmp.x += distance;
+                
                 Input.mousePosition.Set(tmp.x, tmp.y, tmp.z);
             }
 
