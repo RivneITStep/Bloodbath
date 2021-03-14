@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 849712129917807067}
   - component: {fileID: 114431328772666496}
   - component: {fileID: 61682827719349716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: M249
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   Damage: 23
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 3.4
+  isOnPlayerHand: 0
   reloadTime: 3.8
   currReloadTime: 0
   isReloading: 0
@@ -108,6 +109,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 80
   currAmmo: 80
   recoil: 0
+  isFacingRight: 1
 --- !u!114 &114431328772666496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7287547976382248587}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

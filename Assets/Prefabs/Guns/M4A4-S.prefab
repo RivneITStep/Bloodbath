@@ -188,6 +188,7 @@ MonoBehaviour:
   Damage: 17
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.05
+  isOnPlayerHand: 0
   reloadTime: 1.3
   currReloadTime: 0
   isReloading: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 35
   currAmmo: 35
   recoil: 0
+  isFacingRight: 1
 --- !u!114 &114266087486925070
 MonoBehaviour:
   m_ObjectHideFlags: 0

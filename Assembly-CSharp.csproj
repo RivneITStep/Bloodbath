@@ -93,6 +93,8 @@
     <Compile Include="Assets\Scripts\Player\QuestDisplay.cs" />
     <Compile Include="Assets\Scripts\Player\QuestFunctionsList.cs" />
     <Compile Include="Assets\Scripts\Player\QuestResult.cs" />
+    <Compile Include="Assets\Scripts\Rocket.cs" />
+    <Compile Include="Assets\Scripts\RocketLauncher.cs" />
     <Compile Include="Assets\Scripts\Shotgun.cs" />
     <Compile Include="Assets\Scripts\Sniper.cs" />
     <Compile Include="Assets\Scripts\Vehicle\Tank.cs" />

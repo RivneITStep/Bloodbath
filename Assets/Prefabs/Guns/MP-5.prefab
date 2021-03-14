@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802092498324384180}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7776944217246570967}
   - component: {fileID: 114367825351254432}
   - component: {fileID: 61687687808000538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MP-5
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   Damage: 13
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.065
+  isOnPlayerHand: 0
   reloadTime: 1.7
   currReloadTime: 0
   isReloading: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 30
   currAmmo: 30
   recoil: 0
+  isFacingRight: 1
 --- !u!114 &114367825351254432
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7639127392274174658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114453890282905674}
   - component: {fileID: 114331703007528648}
   - component: {fileID: 61129211526608880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CM350M
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -155,6 +155,8 @@ MonoBehaviour:
   currAmmo: 8
   recoil: 0.05
   shotCount: 5
+  isFacingRight: 1
+  isOnPlayerHand: 0
 --- !u!61 &61129211526608880
 BoxCollider2D:
   m_ObjectHideFlags: 0

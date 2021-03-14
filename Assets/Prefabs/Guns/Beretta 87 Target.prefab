@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5852181096816458194}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8411445395038128000}
   - component: {fileID: 114769670719385860}
   - component: {fileID: 61001170298565998}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Beretta 87 Target
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   Damage: 12
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.1
+  isOnPlayerHand: 0
   reloadTime: 0.9
   currReloadTime: 0
   isReloading: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 10
   currAmmo: 10
   recoil: 0.005
+  isFacingRight: 1
 --- !u!114 &114769670719385860
 MonoBehaviour:
   m_ObjectHideFlags: 0

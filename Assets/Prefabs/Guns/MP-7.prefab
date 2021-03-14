@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6613502786114482182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1278065425057647041}
   - component: {fileID: 114339730148074814}
   - component: {fileID: 61370257360145958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MP-7
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   Damage: 12
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.07
+  isOnPlayerHand: 0
   reloadTime: 1.8
   currReloadTime: 0
   isReloading: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 30
   currAmmo: 30
   recoil: 0
+  isFacingRight: 1
 --- !u!114 &114339730148074814
 MonoBehaviour:
   m_ObjectHideFlags: 0

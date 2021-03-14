@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7022454587845369501}
   - component: {fileID: 114288131820680650}
   - component: {fileID: 61365048894897988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SCAR-L
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   Damage: 19
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.45
+  isOnPlayerHand: 0
   reloadTime: 2
   currReloadTime: 0
   isReloading: 0
@@ -108,6 +109,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 25
   currAmmo: 25
   recoil: 0.04
+  isFacingRight: 1
 --- !u!114 &114288131820680650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8915730978568344266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3740364263049322458}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 112575001590192365}
   - component: {fileID: 114512625806868980}
   - component: {fileID: 61839450047875636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: QBZ95
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   Damage: 18
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.67
+  isOnPlayerHand: 0
   reloadTime: 1.8
   currReloadTime: 0
   isReloading: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 32
   currAmmo: 32
   recoil: 0
+  isFacingRight: 1
 --- !u!114 &114512625806868980
 MonoBehaviour:
   m_ObjectHideFlags: 0

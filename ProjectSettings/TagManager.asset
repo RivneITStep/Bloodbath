@@ -22,7 +22,7 @@ TagManager:
   - Item
   - Inventory
   - Player
-  - 
+  - UI_
   - 
   - 
   - 
@@ -43,12 +43,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: UI
-    uniqueID: 1305658149
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Items
     uniqueID: 913774029
+    locked: 0
+  - name: UI
+    uniqueID: 1305658149
+    locked: 0
+  - name: UI_
+    uniqueID: 1550557769
     locked: 0

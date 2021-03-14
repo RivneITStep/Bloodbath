@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3522066097819265762}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3466764144605302271}
   - component: {fileID: 114909741127114696}
   - component: {fileID: 61198430639531672}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Arsenal Firearms AF1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   Damage: 11
   bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
   startTime: 0.5
+  isOnPlayerHand: 0
   reloadTime: 1
   currReloadTime: 0
   isReloading: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   maxAmmoInMagazine: 12
   currAmmo: 12
   recoil: 0.007
+  isFacingRight: 1
 --- !u!114 &114909741127114696
 MonoBehaviour:
   m_ObjectHideFlags: 0

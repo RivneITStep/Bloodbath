@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112392765035077699}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,10 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4642482734721970879}
   - component: {fileID: 8094836334720690891}
-  - component: {fileID: 4503177376749079501}
   - component: {fileID: 114243772269382682}
   - component: {fileID: 61718012293059340}
-  m_Layer: 0
+  - component: {fileID: 3413652359636614511}
+  m_Layer: 9
   m_Name: M24
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -113,31 +113,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4503177376749079501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9203445203001867861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b2a098169b9d04c9426599f84203ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletStartPoint: {fileID: 2112392765035077699}
-  Damage: 100
-  bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
-  startTime: 7
-  reloadTime: 3
-  currReloadTime: 0
-  isReloading: 0
-  BulletSpeed: 10
-  BulletDestroyTime: 15
-  ammo: 20
-  maxAmmoInMagazine: 5
-  currAmmo: 5
-  recoil: 0
 --- !u!114 &114243772269382682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,3 +155,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.06, y: 0.29}
   m_EdgeRadius: 0
+--- !u!114 &3413652359636614511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203445203001867861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d515733ea78939441949f5e0af5d18b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletStartPoint: {fileID: 2112392765035077699}
+  Damage: 150
+  bullet: {fileID: 4676778525851302330, guid: 286d5be09fe7089489fc05df2df9da6c, type: 3}
+  startTime: 7
+  isOnPlayerHand: 0
+  reloadTime: 3
+  currReloadTime: 0
+  isReloading: 0
+  BulletSpeed: 10
+  BulletDestroyTime: 15
+  ammo: 20
+  maxAmmoInMagazine: 5
+  currAmmo: 5
+  recoil: 0
+  distance: 0
+  isFacingRight: 1

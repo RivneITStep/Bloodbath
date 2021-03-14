@@ -46,7 +46,7 @@ public class IglaRocket : MonoBehaviour,IBullet
                     var distance = Mathf.Abs(target.transform.position.x - transform.position.x);
                     var height = target.transform.position.y - transform.position.y/**((target.transform.position.y < transform.position.y) ? -1 : 1)*/;
                     transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan(height / distance) / (Mathf.PI / 180)));
-                    transform.Translate(Vector2.right * speed * 1.5f * Time.deltaTime);
+                    transform.Translate(Vector2.right * speed * 3f * Time.deltaTime);
                 }
                 else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= distanceBeforeFlyUp)
                 {
@@ -54,8 +54,8 @@ public class IglaRocket : MonoBehaviour,IBullet
                     {
                         transform.rotation = Quaternion.Euler(0, 0, 90);
                     }
-                    transform.Translate(Vector2.right * speed * 1.5f * Time.deltaTime);
-                    if (Mathf.Abs(transform.position.y - target.transform.position.y) >= distanceBeforeFlyUp * 2)
+                    transform.Translate(Vector2.right * speed * 2f * Time.deltaTime);
+                    if (Mathf.Abs(transform.position.y - target.transform.position.y) >= distanceBeforeFlyUp * 5)
                         goDown = true;
                 }
                 else

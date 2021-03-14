@@ -49,6 +49,12 @@ public class Sniper : MonoBehaviour,IWeapon
         bullet.GetComponent<Bullet>().damage = Damage;
     }
 
+
+
+    float Distance(float x1, float y1, float z1,float x2, float y2,float z2)
+    {
+        return Mathf.Sqrt(Mathf.Pow((x1-x2),2)+ Mathf.Pow((y1 - y2), 2)+ Mathf.Pow((z1 - z2), 2));
+    }
     // Update is called once per frame
     void Update()
     {
@@ -59,16 +65,20 @@ public class Sniper : MonoBehaviour,IWeapon
             var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition) /*- transform.position*/;
 
 
-            if ( Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(transform.position.x)) < distance && Mathf.Abs(pos.y - transform.position.y) < distance) {
+            if ( /*Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(transform.position.x))*/  
+                Distance(pos.x,pos.y,pos.z,transform.position.x, transform.position.y, transform.position.z) < distance) {
              
                 Camera.main.transform.position = pos;
 
             }
             else
             {
-                var tmp = transform.position;
-                
-                Input.mousePosition.Set(tmp.x, tmp.y, tmp.z);
+                var tmp = pos;
+                tmp.x = transform.position.x + ((transform.position.x > pos.x) ? (-1) * distance : distance);
+                var res = tmp;
+
+                Camera.main.transform.position = res;
+                Input.mousePosition.Set(res.x, res.y, res.z);
             }
 
             if (isReloading && currReloadTime <= 0)
